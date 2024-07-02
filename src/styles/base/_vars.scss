@@ -1,0 +1,32 @@
+/**
+ * Variables
+*/
+
+/* Typography */
+/* Breakpoints */
+/* Paths */
+/* Grid setup */
+/* Colour palette */
+$black: #000;
+$white: #fff;
+
+$text-color: $black;
+
+$default-ease: cubic-bezier(0.33, 1, 0.68, 1);
+$default-time: 0.4s;
+
+$default-transition: $default-time $default-ease;
+
+/* Components */
+$breakpoints: (
+  'XXS': 539px,
+  'XS': 699px,
+  'S': 1019px,
+  'M': 1279px,
+  'L': 1339px,
+) !default;
+
+$pad-l: 56px;
+$pad-m: 4%;
+$pad-s: 5.5%;
+$pad-xs: 16px;

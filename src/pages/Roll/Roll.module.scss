@@ -1,0 +1,57 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-image: url(../../images/design/start-bg-mob.svg);
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+.wrap {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 0 16px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.roll {
+  width: 286px;
+  height: fit-content;
+  border-radius: 16px;
+  border: 1px solid #fff;
+  background: linear-gradient(
+    201deg,
+    #fff 54.69%,
+    rgba(255, 255, 255, 0.36) 107.45%
+  );
+  box-shadow: 0px 14px 64px 0px rgba(70, 63, 62, 0.3);
+  padding: 24px 16px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  img {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+  }
+
+  p {
+    font-family: 'RussianRail G Pro';
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0.2px;
+    text-align: center;
+    color: #003659;
+    margin-top: 28px;
+  }
+}

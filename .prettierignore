@@ -1,0 +1,9 @@
+node_modules
+.next
+yarn.lock
+package-lock.json
+public
+dist
+.eslintrc.js
+ckeditor5custom
+**/ckeditor5custom/*

@@ -1,0 +1,101 @@
+.header {
+  position: relative;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.header--home {
+  padding: 50px 0 0;
+
+  @media (max-width: 1439px) {
+    padding: 48px 0 0;
+  }
+
+  @media (max-width: 1023px) {
+    padding: 29px 0 0;
+  }
+
+  .logo {
+    width: 223px;
+    height: auto;
+    opacity: 0;
+
+    @media (max-width: 1023px) {
+      width: 108px;
+    }
+  }
+}
+
+.header--final {
+  padding: 50px 0 0;
+
+  @media (max-width: 1439px) {
+    padding: 48px 0 0;
+  }
+
+  @media (max-width: 1023px) {
+    padding: 29px 0 0;
+  }
+
+  .logo {
+    width: 223px;
+    height: auto;
+    opacity: 0;
+
+    @media (max-width: 1023px) {
+      width: 108px;
+    }
+  }
+}
+
+.header--start {
+  padding: 50px 0 0;
+
+  @media (max-width: 1439px) {
+    padding: 48px 0 0;
+  }
+
+  @media (max-width: 1023px) {
+    padding: 29px 0 0;
+  }
+
+  .logo {
+    width: 223px;
+    height: auto;
+    opacity: 0;
+
+    @media (max-width: 1023px) {
+      width: 108px;
+    }
+  }
+}
+
+.header--game {
+  padding: 50px 0 0;
+
+  @media (max-width: 1439px) {
+    padding: 48px 0 0;
+  }
+
+  @media (max-width: 1023px) {
+    padding: 29px 16px 0;
+  }
+
+  @media (max-width: 760px) {
+    padding: 10px 16px 13px;
+  }
+
+  .logo {
+    width: 223px;
+    height: auto;
+    opacity: 0;
+
+    @media (max-width: 1023px) {
+      width: 108px;
+    }
+
+    @media (max-width: 760px) {
+      width: 88px;
+    }
+  }
+}

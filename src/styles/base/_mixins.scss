@@ -1,0 +1,231 @@
+@import "../../styles/base/vars";
+
+/* stylelint-disable scss/dollar-variable-pattern */
+/* stylelint-disable scss/no-global-function-names */
+/* stylelint-disable selector-pseudo-element-no-unknown */
+/**
+ * Helper mixins
+*/
+
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "+"Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+@mixin breakpointH($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-height: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "+"Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+@mixin flex($align: flex-start, $space: space-between) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: $align;
+  justify-content: $space;
+}
+
+@mixin btn-style($radius: 50%) {
+  background-color: $orange;
+  border: 1px solid $black;
+  border-radius: $radius;
+}
+
+// Clearfix
+// http://www.cssmojo.com/latest_new_clearfix_so_far/
+// Other clearfix options: https://github.com/stubbornella/oocss/blob/master/oocss/src/components/utils/_clearfix-me.scss
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+// Media queries
+@mixin bp($point) {
+  @if $point ==large {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  }
+
+  @else if $point ==small {
+    @media (max-width: 1279px) {
+      @content;
+    }
+  }
+}
+
+// Text selection
+@mixin text-selection($color-selection, $color-selection-bg) {
+  ::selection {
+    // sass-lint:disable-line no-vendor-prefixes
+    background: $color-selection-bg;
+    color: $color-selection;
+    text-shadow: none;
+  }
+
+  ::selection {
+    background: $color-selection-bg;
+    color: $color-selection;
+    text-shadow: none;
+  }
+}
+
+//Placeholders
+//Usage:
+//@include placeholder;
+@mixin placeholder {
+
+  // sass-lint:disable no-vendor-prefixes
+  ::input-placeholder {
+    @content
+  }
+
+  :placeholder {
+    @content
+  }
+
+  ::placeholder {
+    @content
+  }
+
+  :input-placeholder {
+    @content
+  }
+}
+
+/*========================================
+// Reset
+========================================*/
+
+@mixin list-style-none {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+@mixin button-reset-style {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: 0;
+  appearance: none;
+  outline: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+@mixin input-reset-style {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: 0;
+  appearance: none;
+  outline: 0;
+  font-family: inherit;
+}
+
+
+/*========================================
+// Inputs
+========================================*/
+
+@mixin input-size($height, $padding-horizontal, $font-size, $line-height, $context: $browser-context) {
+  $padding-bottom: decimal-round(($height - $line-height) / 2);
+  $padding-top: ($height - $line-height) - $padding-bottom;
+  height: rem($height, $context);
+  padding: rem($padding-top - 1, $context) rem($padding-horizontal, $context) rem($padding-bottom - 1, $context);
+  font-size: rem($font-size, $context);
+  line-height: rem($line-height, $context);
+}
+
+
+/*========================================
+// Selects
+========================================*/
+
+@mixin select-size($height, $padding-horizontal, $font-size, $line-height, $context: $browser-context) {
+  $padding-bottom: decimal-round(($height - $line-height) / 2);
+  $padding-top: ($height - $line-height) - $padding-bottom;
+  height: rem($height, $context);
+  padding: rem($padding-top - 1, $context) rem($padding-horizontal, $context) rem($padding-bottom - 1, $context);
+  font-size: rem($font-size, $context);
+  line-height: rem($line-height, $context);
+}
+
+
+/*========================================
+// Buttons
+========================================*/
+
+@mixin button-size($height, $padding-horizontal, $font-size, $context: $browser-context) {
+  height: rem($height, $context);
+  padding-right: rem($padding-horizontal, $context);
+  padding-left: rem($padding-horizontal, $context);
+  font-size: rem($font-size, $context);
+  line-height: rem($height - 1, $context);
+}
+
+@mixin button-style($background, $color, $color-hover: $color) {
+  background-color: $background;
+  color: $color;
+
+  &:hover {
+    background-color: lighten($background, 6%);
+    color: $color-hover;
+  }
+}
+
+@mixin button-outline($border-color, $color, $border-color-hover: $border-color, $background-color-hover: false, $color-hover: $color) {
+  border-color: $border-color;
+  color: $color;
+
+  &:hover {
+    border-color: $border-color-hover;
+
+    @if $background-color-hover {
+      background-color: $background-color-hover;
+    }
+
+    color: $color-hover;
+  }
+}
+
+@mixin adaptive-font($startSize, $minSize, $maxWidth: 1920, $minWidth: 320) {
+  $addSize: $startSize - $minSize;
+  font-size: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$maxWidth - $minWidth}));
+}
+
+@mixin symbol-pseudo() {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    display: block;
+    left: 0;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: contain;
+    pointer-events: none;
+  }
+}
